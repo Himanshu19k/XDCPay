@@ -189,8 +189,8 @@ function shortenBalance (balance, decimalsToKeep = 1) {
     return '<0.001'
   } else if (convertedBalance < 1) {
     var stringBalance = convertedBalance.toString()
-    if (stringBalance.split('.')[1].length > 3) {
-      return convertedBalance.toFixed(3)
+    if (stringBalance.split('.')[1].length > 9) {
+      return convertedBalance.toFixed(9)
     } else {
       return stringBalance
     }

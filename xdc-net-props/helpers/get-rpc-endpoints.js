@@ -33,9 +33,9 @@ function getRPCEndpoints(network) {
 	case XDAI_CODE:
 		return ['https://dai.poa.network/']
 	case XDC_CODE:
-		return ['https://XDCPayrpc.xinfin.network']
+		return ['https://explorer.xinfin.network']
 	case XDC_TESTNET_CODE:
-		return ['https://XDCPayrpc.apothem.network']
+		return ['https://explorer.apothem.network']
 	case CLASSIC_CODE:
 		return ['https://classic.blockscout.com/']
 	default:

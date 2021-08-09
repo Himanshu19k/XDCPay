@@ -75,7 +75,7 @@ ConfigScreen.prototype.render = function () {
           },
         }, warning),
       ]),
-
+      
       // conf view
       h('.flex-column.flex-justify-center.flex-grow.select-none', [
         h('.flex-space-around', {
@@ -84,10 +84,36 @@ ConfigScreen.prototype.render = function () {
             overflow: 'auto',
           },
         }, [
-
+          
           currentProviderDisplay(metamaskState, state),
-
-          h('div', { style: {display: 'flex'} }, [
+          
+          h('div', {
+            style: {
+              display: 'flex',
+              flex: 'wrap',
+          }
+          }, [
+            
+            h('input#new_rpc', {
+              placeholder: 'Network Name',
+              style: {
+                width: 'inherit',
+                flex: '1 0 auto',
+                height: '32px',
+                margin: '20px 20px 0 0',
+                borderRadius: '3px',
+                border: '1px solid #e2e2e2',
+                padding: '10px',
+              },
+              onKeyPress: (event) => {
+                if (event.key === 'Enter') {
+                  const element = event.target
+                  const networkName= element.value
+                  this.networkNameValidation(networkName,state)
+                }
+              },
+            }),
+            
             h('input#new_rpc', {
               placeholder: 'New RPC URL',
               style: {
@@ -266,6 +292,11 @@ ConfigScreen.prototype.rpcValidation = function (newRpc, state) {
   }
 }
 
+ConfigScreen.prototype.networkNameValidation = function (networkName, state) {
+  if (networkName != null) {
+      state.dispatch(actions.setNetworkName(networkName))
+    }
+}
 function currentConversionInformation (metamaskState, state) {
   const currentCurrency = metamaskState.currentCurrency
   const conversionDate = metamaskState.conversionDate
@@ -310,3 +341,4 @@ function currentProviderDisplay (metamaskState, state) {
     }, 'Delete'),
   ])
 }
+

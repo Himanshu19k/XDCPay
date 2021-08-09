@@ -3,7 +3,7 @@ const h = require('react-hyperscript')
 const inherits = require('util').inherits
 const ethNetProps = require('xdc-net-props')
 const { networks } = require('../../../app/scripts/controllers/network/util')
-
+// const { rcpName } = require(ui/app/actions)
 module.exports = Network
 
 inherits(Network, Component)
@@ -40,7 +40,9 @@ Network.prototype.render = function () {
       displayName = networks[networkNumber].displayNameDropdown
       hoverText = ethNetProps.props.getNetworkDisplayName(networkNumber)
     } else {
-      displayName = 'XinFin Private Network'
+      // networkName = provider.rpcName,
+      // networkName = networkName.replace(https.'')
+      displayName = `XinFIn Private Network`
       hoverText = `Private Network (${provider.rpcTarget})`
     }
   }
