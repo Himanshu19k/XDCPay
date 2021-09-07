@@ -402,14 +402,14 @@ function toChecksumAddressXDC (address, chainId = null) {
   return output.toLowerCase()
 }
 
-function toChecksumAddress (network, address, chainId = null) {
+function toChecksumAddress (network, userAddress, chainId = null) {
   if (ifXDC(network)) {
-    return toChecksumAddressXDC(address, parseInt(network))
+    return toChecksumAddressXDC(userAddress, parseInt(network))
   } else {
-    return ethUtil.toChecksumAddress(address, chainId)
+    return ethUtil.toChecksumAddress(userAddress, chainId)
   }
 }
 
-function isValidChecksumAddress (network, address) {
-  return isValidAddress(address, network) && toChecksumAddress(network, address) === address
+function isValidChecksumAddress (network, userAddress) {
+  return isValidAddress(userAddress, network) && toChecksumAddress(network, userAddress) === userAddress
 }
